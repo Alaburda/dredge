@@ -1,0 +1,55 @@
+---
+date: "`r Sys.Date()`"
+author: "Paulius Alaburda"
+title: "Statistinė analizė"
+output: 
+  officedown::rdocx_document:
+    mapstyles:
+      Normal: ['First Paragraph']
+    reference_docx: "word_stats_analysis_template.docx"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      warning = FALSE, 
+                      message = FALSE, 
+                      tab.cap.style = "Table Caption",
+                      tab.cap.pre = "Lentelė ",
+                      tab.cap.sep = ". ",
+                      fig.cap.style = "Image Caption",
+                      fig.cap.pre = "",
+                      fig.cap.sep = " pav. ",
+                      fig.width = 5.8, 
+                      fig.height = 4.8, 
+                      fig.cap = TRUE,
+                      dpi = 300,
+                      results = 'asis')
+
+options(scipen=999, digits = 3)
+
+library(dredge)
+library(tidyverse)
+library(shiny.i18n)
+
+i18n <- Translator$new(translation_csvs_path = system.file("templates/template_knit_chisq.Rmd", package = "dredge"))
+i18n$set_translation_language("lt")
+
+
+```
+
+## Statistinės analizės metodai
+
+Statistinė analizė buvo atlikta su R v4.0.2 (R Core Team, `r lubridate::year(Sys.Date())`). Surinkti kokybiniai duomenys yra pateikti kaip dažniai ir procentai. Kiekybiniai duomenys yra pateikti kaip vidurkiai ir standartiniai nuokrypiai (SD), suapvalinti vienu skaitmeniu daugiau negu surinktuose duomenyse. 
+
+Dviejų kokybinių kintamųjų priklausomybė buvo vertinta Pirsono Chi-kvadrato testu. Kai vienas iš tikėtinų dažnių buvo mažesnis negu 5, buvo taikytas Fisher tikslus testas. Cochran–Mantel–Haenszel testas buvo taikytas lyginant rezultatus pagal 2 arba daugiau kokybinius kintamuosius
+
+Kiekybinio kintamojo skirtumas tarp dviejų kategorijų buvo vertintas su Stjudento t-testu, tarp daugiau negu dviejų kategorijų buvo vertintas ANOVA. Kiekybinių duomenų pasiskirstymas pagal normalųjį skirstinį buvo vertintas Shapiro-Wilk testu. Esant nenormaliam duomenų pasiskirstymui, skirtumai tarp dviejų kategorijų buvo vertinti Mann-Whitney testu, tarp daugiau negu dviejų kategorijų vertinti Kruskal-Wallis testu.
+
+Visi statistiniai testai atlikti laikant 5% statistinio reikšmingumo lygį. P reikšmės buvo apvalintos iki trijų skaičių po kablelio. P reikšmės mažesnės negu 0,001 pateiktos kaip <0,001. P reikšmės didesnės negu 0,999 pateiktos kaip >0,999.
+
+```{r}
+
+knit_chisq(mtcars, "gear", "cyl")
+
+```
+

@@ -1,0 +1,11 @@
+## Asociacija tarp `r x` ir `r y`
+
+```{r}
+
+x_ <- rlang::sym(x)
+y_ <- rlang::sym(y)
+
+```
+
+`r shiny.i18n::i18n$t("Atlikus Chi-kvadrato testą rasta statistiškai reikšminga asociacija tarp {x_name} ir {y_name} ({chi_rs}).")`
+

@@ -1,0 +1,16 @@
+{
+  "cultural_date_format": "%Y-%d-%m",
+  "languages": ["lt", "en"],
+  "translation": [
+      {
+        "lt": "Atlikus Chi-kvadrato testą rasta statistiškai reikšminga asociacija tarp {x_name} ir {y_name} ({chi_rs}).",
+        "en": "Pearson's Chi-square test showed a statistically significant association between {x_name} and {y_name} ({chi_rs})."
+
+      },
+      {
+        "lt": "Atlikus Chi-kvadrato testą statistiškai reikšminga asociacija tarp {x_name} ir {y_name} nebuvo nustatyta ({chi_rs}).",
+        "en": "Pearson's Chi-square test did not show an association between {x_name} and {y_name} ({chi_rs})."
+      }
+
+    ]
+}
